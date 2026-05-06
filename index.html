@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>THRESHOLD — A Private Cinematic Vocal Experience by Triin Lellep</title>
+<meta name="description" content="A private cinematic vocal experience for hosts whose guests have already encountered most things money can buy. By European cinematic soprano and author Triin Lellep." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  /* ============== TOKENS ============== */
+  :root {
+    --burgundy-deep: #3a1818;
+    --burgundy: #5C2E2E;
+    --gold: #C9A961;
+    --gold-soft: #B89548;
+    --gold-dark: #8B6914;
+    --black: #0E0A08;
+    --black-warm: #1C1612;
+    --charcoal: #2A2420;
+    --pearl: #F5F0E8;
+    --pearl-warm: #EDE5D5;
+    --grey: #807467;
+    --line: rgba(201, 169, 97, 0.18);
+    --line-strong: rgba(201, 169, 97, 0.4);
+
+    --display: 'Cormorant Garamond', 'Georgia', serif;
+    --body: 'Inter', -apple-system, sans-serif;
+
+    --max: 1240px;
+    --reading: 720px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--body);
+    color: var(--pearl);
+    background: var(--black);
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.7;
+    letter-spacing: 0.01em;
+    overflow-x: hidden;
+  }
+
+  /* ============== NAV ============== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 28px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(14, 10, 8, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201, 169, 97, 0.08);
+  }
+
+  .logo {
+    font-family: var(--display);
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: 0.32em;
+    color: var(--gold);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 44px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--pearl);
+    text-decoration: none;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    font-weight: 400;
+    transition: color 0.4s ease;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    color: var(--gold) !important;
+    border-bottom: 1px solid var(--line-strong);
+    padding-bottom: 4px;
+  }
+
+  /* ============== HERO ============== */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 48px;
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse at 30% 50%, rgba(92, 46, 46, 0.35) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 70%, rgba(201, 169, 97, 0.08) 0%, transparent 50%),
+      var(--black);
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E");
+    opacity: 0.04;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+  }
+
+  .hero-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 1.6s 0.3s forwards;
+  }
+
+  .hero-eyebrow::before {
+    content: "";
+    display: inline-block;
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+    vertical-align: middle;
+    margin-right: 16px;
+    margin-bottom: 3px;
+  }
+
+  h1.hero-title {
+    font-family: var(--display);
+    font-size: clamp(64px, 12vw, 168px);
+    line-height: 0.95;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    color: var(--pearl);
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 1.6s 0.6s forwards;
+  }
+
+  .hero-subtitle {
+    font-family: var(--display);
+    font-size: clamp(20px, 2.4vw, 30px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gold);
+    margin-bottom: 40px;
+    letter-spacing: 0.02em;
+    opacity: 0;
+    animation: fadeUp 1.6s 0.9s forwards;
+  }
+
+  .hero-byline {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.32em;
+    color: var(--pearl);
+    opacity: 0.7;
+    margin-bottom: 56px;
+    opacity: 0;
+    animation: fadeUp 1.6s 1.2s forwards;
+  }
+
+  .hero-byline span {
+    color: var(--gold);
+    text-transform: none;
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 18px;
+    letter-spacing: 0.04em;
+    margin-left: 8px;
+  }
+
+  .hero-lede {
+    max-width: 580px;
+    font-size: 18px;
+    line-height: 1.65;
+    color: var(--pearl);
+    opacity: 0;
+    animation: fadeUp 1.6s 1.5s forwards;
+    margin-bottom: 56px;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 36px;
+    background: transparent;
+    color: var(--gold);
+    border: 1px solid var(--gold-soft);
+    font-family: var(--body);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    text-decoration: none;
+    transition: all 0.5s ease;
+    opacity: 0;
+    animation: fadeUp 1.6s 1.8s forwards;
+  }
+
+  .hero-cta:hover {
+    background: var(--gold);
+    color: var(--black);
+  }
+
+  .hero-cta::after {
+    content: "→";
+    transition: transform 0.4s ease;
+  }
+
+  .hero-cta:hover::after { transform: translateX(4px); }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(24px); }
+  }
+
+  /* ============== SECTIONS ============== */
+  section {
+    padding: 140px 48px;
+    position: relative;
+  }
+
+  .section-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+  }
+
+  .section-eyebrow {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    margin-bottom: 32px;
+  }
+
+  .section-eyebrow::before {
+    content: "";
+    display: inline-block;
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+    vertical-align: middle;
+    margin-right: 16px;
+    margin-bottom: 3px;
+  }
+
+  h2 {
+    font-family: var(--display);
+    font-size: clamp(40px, 5.5vw, 72px);
+    line-height: 1.05;
+    font-weight: 300;
+    letter-spacing: 0.01em;
+    color: var(--pearl);
+    margin-bottom: 56px;
+    max-width: 920px;
+  }
+
+  h2 em {
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 300;
+  }
+
+  /* ============== NEGATION SECTION ============== */
+  .negation {
+    padding: 160px 48px;
+    background: var(--black-warm);
+    position: relative;
+  }
+
+  .negation::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 50%;
+    width: 1px;
+    height: 80px;
+    background: linear-gradient(to bottom, transparent, var(--gold-soft));
+  }
+
+  .negation-list {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .negation-line {
+    font-family: var(--display);
+    font-size: clamp(28px, 4vw, 52px);
+    line-height: 1.15;
+    font-weight: 300;
+    color: var(--pearl);
+    margin-bottom: 24px;
+    letter-spacing: 0.01em;
+  }
+
+  .negation-line.strike {
+    color: var(--grey);
+    font-style: italic;
+  }
+
+  .negation-line.affirm {
+    color: var(--gold);
+    margin-top: 64px;
+    font-style: italic;
+  }
+
+  .negation-rule {
+    width: 60px;
+    height: 1px;
+    background: var(--gold-soft);
+    margin: 48px auto;
+  }
+
+  /* ============== CHANGE-ROOM PULL QUOTE ============== */
+  .pull-quote-section {
+    padding: 180px 48px;
+    background: var(--black);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pull-quote-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(92, 46, 46, 0.4) 0%, transparent 70%);
+  }
+
+  .pull-quote {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .pull-quote p {
+    font-family: var(--display);
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 1.15;
+    font-weight: 300;
+    color: var(--pearl);
+    font-style: italic;
+    letter-spacing: 0.005em;
+  }
+
+  .pull-quote p span {
+    display: block;
+    color: var(--gold);
+    margin-top: 16px;
+  }
+
+  /* ============== EVENING ============== */
+  .evening {
+    padding: 160px 48px;
+    background: var(--black-warm);
+  }
+
+  .evening-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    margin-top: 64px;
+  }
+
+  .evening-fact {
+    border-top: 1px solid var(--line);
+    padding-top: 24px;
+  }
+
+  .evening-fact-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.32em;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .evening-fact-value {
+    font-family: var(--display);
+    font-size: 28px;
+    line-height: 1.3;
+    font-weight: 400;
+    color: var(--pearl);
+  }
+
+  .evening-prose {
+    max-width: 720px;
+    font-size: 18px;
+    line-height: 1.75;
+    color: var(--pearl);
+    margin-top: 80px;
+    padding-top: 40px;
+    border-top: 1px solid var(--line);
+  }
+
+  /* ============== MOVEMENTS ============== */
+  .movements {
+    padding: 160px 48px;
+    background: var(--black);
+  }
+
+  .movements-list {
+    margin-top: 80px;
+    max-width: 920px;
+  }
+
+  .movement {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 56px;
+    padding: 48px 0;
+    border-top: 1px solid var(--line);
+    align-items: baseline;
+  }
+
+  .movement:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .movement-num {
+    font-family: var(--display);
+    font-size: 18px;
+    font-style: italic;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+  }
+
+  .movement-content h3 {
+    font-family: var(--display);
+    font-size: clamp(28px, 3.5vw, 40px);
+    line-height: 1.2;
+    font-weight: 400;
+    color: var(--pearl);
+    margin-bottom: 12px;
+  }
+
+  .movement-content p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--pearl);
+    opacity: 0.85;
+    max-width: 600px;
+  }
+
+  /* ============== ARTIST ============== */
+  .artist {
+    padding: 160px 48px;
+    background: var(--black-warm);
+  }
+
+  .artist-content {
+    max-width: 800px;
+  }
+
+  .artist-bio {
+    font-family: var(--display);
+    font-size: clamp(22px, 2.6vw, 32px);
+    line-height: 1.45;
+    font-weight: 300;
+    color: var(--pearl);
+    margin-bottom: 48px;
+  }
+
+  .artist-bio em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .credentials {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+  }
+
+  .credential {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    color: var(--gold);
+  }
+
+  .credential::before {
+    content: "·";
+    margin-right: 32px;
+    color: var(--line-strong);
+  }
+
+  .credential:first-child::before { display: none; }
+
+  /* ============== FOR HOSTS ============== */
+  .hosts {
+    padding: 160px 48px;
+    background: var(--black);
+  }
+
+  .hosts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    margin-top: 64px;
+    border: 1px solid var(--line);
+  }
+
+  .host-tile {
+    background: var(--black);
+    padding: 48px 32px;
+    transition: background 0.5s ease;
+  }
+
+  .host-tile:hover {
+    background: var(--black-warm);
+  }
+
+  .host-tile-num {
+    font-family: var(--display);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .host-tile h4 {
+    font-family: var(--display);
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--pearl);
+    line-height: 1.3;
+  }
+
+  /* ============== COMMISSION ============== */
+  .commission {
+    padding: 180px 48px;
+    background:
+      linear-gradient(to bottom, var(--black-warm), var(--burgundy-deep));
+    position: relative;
+    overflow: hidden;
+  }
+
+  .commission::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at top, rgba(201, 169, 97, 0.1) 0%, transparent 50%);
+  }
+
+  .commission-inner {
+    position: relative;
+    z-index: 2;
+    max-width: var(--max);
+    margin: 0 auto;
+  }
+
+  .commission h2 {
+    margin-bottom: 64px;
+  }
+
+  .commission-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .commission-details {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .commission-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .commission-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    color: var(--gold);
+  }
+
+  .commission-value {
+    font-family: var(--display);
+    font-size: 18px;
+    color: var(--pearl);
+    line-height: 1.4;
+  }
+
+  .commission-cta {
+    background: var(--black);
+    border: 1px solid var(--gold-soft);
+    padding: 56px 48px;
+  }
+
+  .commission-cta-title {
+    font-family: var(--display);
+    font-size: 32px;
+    font-weight: 300;
+    color: var(--pearl);
+    line-height: 1.2;
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+
+  .commission-cta p {
+    font-size: 15px;
+    color: var(--pearl);
+    opacity: 0.85;
+    margin-bottom: 32px;
+    line-height: 1.7;
+  }
+
+  .commission-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 32px;
+    background: var(--gold);
+    color: var(--black);
+    border: 1px solid var(--gold);
+    text-decoration: none;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    font-weight: 500;
+    transition: all 0.4s ease;
+  }
+
+  .commission-button:hover {
+    background: transparent;
+    color: var(--gold);
+  }
+
+  .commission-button::after {
+    content: "→";
+  }
+
+  /* ============== FOOTER ============== */
+  footer {
+    padding: 80px 48px 40px;
+    background: var(--black);
+    border-top: 1px solid var(--line);
+  }
+
+  .footer-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 80px;
+    margin-bottom: 60px;
+  }
+
+  .footer-logo {
+    font-family: var(--display);
+    font-size: 28px;
+    letter-spacing: 0.32em;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .footer-tagline {
+    font-family: var(--display);
+    font-style: italic;
+    color: var(--pearl);
+    opacity: 0.7;
+    font-size: 16px;
+    max-width: 360px;
+  }
+
+  .footer-col h5 {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    color: var(--gold);
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+
+  .footer-col p, .footer-col a {
+    font-size: 14px;
+    color: var(--pearl);
+    line-height: 1.8;
+    text-decoration: none;
+    display: block;
+  }
+
+  .footer-col a:hover { color: var(--gold); }
+
+  .footer-bottom {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--grey);
+  }
+
+  .footer-bottom .stardi {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  /* ============== RESPONSIVE ============== */
+  @media (max-width: 900px) {
+    nav { padding: 20px 24px; }
+    .nav-links { gap: 24px; }
+    .nav-links a { font-size: 11px; }
+    .nav-links li:not(:last-child) { display: none; }
+
+    section, .hero, .negation, .pull-quote-section, .evening,
+    .movements, .artist, .hosts, .commission { padding: 100px 24px; }
+    .hero { padding-top: 140px; }
+
+    .evening-grid { grid-template-columns: 1fr; gap: 40px; }
+    .movement { grid-template-columns: 1fr; gap: 16px; padding: 32px 0; }
+    .hosts-grid { grid-template-columns: 1fr; }
+    .commission-grid { grid-template-columns: 1fr; gap: 56px; }
+    .footer-inner { grid-template-columns: 1fr; gap: 48px; }
+    .footer-bottom { flex-direction: column; gap: 12px; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- ============== NAVIGATION ============== -->
+<nav>
+  <div class="logo">THRESHOLD</div>
+  <ul class="nav-links">
+    <li><a href="#evening">The Experience</a></li>
+    <li><a href="#artist">The Artist</a></li>
+    <li><a href="#hosts">For Hosts</a></li>
+    <li><a href="#commission" class="nav-cta">Private Invitation</a></li>
+  </ul>
+</nav>
+
+<!-- ============== HERO ============== -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">By Private Invitation</div>
+    <h1 class="hero-title">THRESHOLD</h1>
+    <div class="hero-subtitle">A Private Cinematic Vocal Experience</div>
+    <div class="hero-byline">By European Soprano <span>Triin Lellep</span></div>
+    <p class="hero-lede">
+      For private hosts, luxury hotels, cultural salons and intimate international rooms
+      whose guests have already encountered most things money can buy.
+    </p>
+    <a href="#commission" class="hero-cta">Invite Threshold Into Your Room</a>
+  </div>
+</section>
+
+<!-- ============== NEGATION ============== -->
+<section class="negation">
+  <div class="negation-list">
+    <p class="negation-line strike">This is not a concert.</p>
+    <p class="negation-line strike">This is not a recital.</p>
+    <p class="negation-line strike">This is not a wellness session.</p>
+    <div class="negation-rule"></div>
+    <p class="negation-line affirm">It is a private vocal encounter <br/>for twenty to forty invited guests.</p>
+  </div>
+</section>
+
+<!-- ============== PULL QUOTE — THE CHANGE-ROOM LINE ============== -->
+<section class="pull-quote-section">
+  <div class="pull-quote">
+    <p>
+      The artist does not enter the room to entertain.
+      <span>She enters to change the room.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============== EVENING ============== -->
+<section class="evening" id="evening">
+  <div class="section-inner">
+    <div class="section-eyebrow">The Evening</div>
+    <h2>Ninety minutes <em>without amplification</em>, in a candle-lit private interior.</h2>
+
+    <div class="evening-grid">
+      <div class="evening-fact">
+        <div class="evening-fact-label">Duration</div>
+        <div class="evening-fact-value">90 minutes</div>
+      </div>
+      <div class="evening-fact">
+        <div class="evening-fact-label">Capacity</div>
+        <div class="evening-fact-value">20 – 40 guests</div>
+      </div>
+      <div class="evening-fact">
+        <div class="evening-fact-label">Setting</div>
+        <div class="evening-fact-value">Candle-lit interior. No stage required.</div>
+      </div>
+      <div class="evening-fact">
+        <div class="evening-fact-label">Sound</div>
+        <div class="evening-fact-value">No amplification. Voice and room.</div>
+      </div>
+      <div class="evening-fact">
+        <div class="evening-fact-label">Languages</div>
+        <div class="evening-fact-value">English & French</div>
+      </div>
+      <div class="evening-fact">
+        <div class="evening-fact-label">Access</div>
+        <div class="evening-fact-value">Invitation-only, curated by host</div>
+      </div>
+    </div>
+
+    <p class="evening-prose">
+      The experience combines classical European repertoire in Italian, French and Latin
+      with philosophical literary fragments from the artist's published work,
+      an intimate dialogue with the room, silence, and a final personal vocal phrase
+      offered to each guest.
+    </p>
+  </div>
+</section>
+
+<!-- ============== FIVE MOVEMENTS ============== -->
+<section class="movements">
+  <div class="section-inner">
+    <div class="section-eyebrow">The Five Movements</div>
+    <h2>The architecture of <em>a single threshold</em>, traced across five movements.</h2>
+
+    <div class="movements-list">
+      <div class="movement">
+        <div class="movement-num">I.</div>
+        <div class="movement-content">
+          <h3>Arrival</h3>
+          <p>The room crosses into silence. A single sustained tone begins so quietly that several guests will not notice when it began — only that the room has changed.</p>
+        </div>
+      </div>
+
+      <div class="movement">
+        <div class="movement-num">II.</div>
+        <div class="movement-content">
+          <h3>European Inheritance</h3>
+          <p>Three classical pieces in Italian, French and Latin. The technical foundation is established. By the end of the movement, no guest doubts the voice that holds the room.</p>
+        </div>
+      </div>
+
+      <div class="movement">
+        <div class="movement-num">III.</div>
+        <div class="movement-content">
+          <h3>The Conversation</h3>
+          <p>Philosophical literary fragments and intimate dialogue. Questions are invited from the room. Most cultural products people pay for are one-way. This one is not.</p>
+        </div>
+      </div>
+
+      <div class="movement">
+        <div class="movement-num">IV.</div>
+        <div class="movement-content">
+          <h3>Crossing</h3>
+          <p>Voice as resonance, breath and presence. Sustained vowels, slowly modulating intervals. The closest the evening comes to a state outside of words.</p>
+        </div>
+      </div>
+
+      <div class="movement">
+        <div class="movement-num">V.</div>
+        <div class="movement-content">
+          <h3>Individual Threshold</h3>
+          <p>A brief personal vocal phrase offered to each guest, one by one. No words. No performance gesture. The moment most guests will remember as the most personal artistic encounter of their year.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== ARTIST ============== -->
+<section class="artist" id="artist">
+  <div class="section-inner">
+    <div class="section-eyebrow">The Artist</div>
+    <h2>Triin Lellep</h2>
+
+    <div class="artist-content">
+      <p class="artist-bio">
+        A European cinematic soprano and author, trained at the
+        <em>Helsinki Conservatory</em> and <em>Paris&nbsp;8</em>.
+        Her work brings together classical voice, literary cosmology
+        and the intimate architecture of private rooms.
+        Based between Europe and Asia, she now creates a small number
+        of private vocal evenings each year for selected international hosts.
+      </p>
+
+      <div class="credentials">
+        <span class="credential">Helsinki Conservatory</span>
+        <span class="credential">Paris 8</span>
+        <span class="credential">Published author</span>
+        <span class="credential">Europe & Asia</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FOR HOSTS ============== -->
+<section class="hosts" id="hosts">
+  <div class="section-inner">
+    <div class="section-eyebrow">For Hosts</div>
+    <h2>For rooms that already <em>have everything</em> — and now seek something rarer.</h2>
+
+    <div class="hosts-grid">
+      <div class="host-tile">
+        <div class="host-tile-num">i.</div>
+        <h4>Boutique luxury hotels</h4>
+      </div>
+      <div class="host-tile">
+        <div class="host-tile-num">ii.</div>
+        <h4>Private members' clubs</h4>
+      </div>
+      <div class="host-tile">
+        <div class="host-tile-num">iii.</div>
+        <h4>Embassies & cultural institutes</h4>
+      </div>
+      <div class="host-tile">
+        <div class="host-tile-num">iv.</div>
+        <h4>Foundations</h4>
+      </div>
+      <div class="host-tile">
+        <div class="host-tile-num">v.</div>
+        <h4>Family offices</h4>
+      </div>
+      <div class="host-tile">
+        <div class="host-tile-num">vi.</div>
+        <h4>Private salons</h4>
+      </div>
+      <div class="host-tile">
+        <div class="host-tile-num">vii.</div>
+        <h4>Curated retreat properties</h4>
+      </div>
+      <div class="host-tile">
+        <div class="host-tile-num">viii.</div>
+        <h4>Collectors' dinners</h4>
+      </div>
+      <div class="host-tile">
+        <div class="host-tile-num">ix.</div>
+        <h4>High-end hospitality experiences</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== COMMISSION ============== -->
+<section class="commission" id="commission">
+  <div class="commission-inner">
+    <div class="section-eyebrow">Private Commission</div>
+    <h2>Available by <em>private invitation</em> for selected hosts in Asia, Europe and the Gulf.</h2>
+
+    <div class="commission-grid">
+      <div class="commission-details">
+        <div class="commission-row">
+          <div class="commission-label">Duration</div>
+          <div class="commission-value">90 minutes</div>
+        </div>
+        <div class="commission-row">
+          <div class="commission-label">Capacity</div>
+          <div class="commission-value">20 – 40 guests</div>
+        </div>
+        <div class="commission-row">
+          <div class="commission-label">Setting</div>
+          <div class="commission-value">Candle-lit private interior</div>
+        </div>
+        <div class="commission-row">
+          <div class="commission-label">Languages</div>
+          <div class="commission-value">English & French</div>
+        </div>
+        <div class="commission-row">
+          <div class="commission-label">Geography</div>
+          <div class="commission-value">Asia, Europe, the Gulf</div>
+        </div>
+        <div class="commission-row">
+          <div class="commission-label">Availability</div>
+          <div class="commission-value">Late 2026 and 2027</div>
+        </div>
+        <div class="commission-row">
+          <div class="commission-label">Fee</div>
+          <div class="commission-value">By private commission</div>
+        </div>
+      </div>
+
+      <div class="commission-cta">
+        <div class="commission-cta-title">Request a private invitation</div>
+        <p>
+          Tell us a little about the room you have in mind. If the alignment is right,
+          we will be in touch personally within seven days.
+        </p>
+        <a href="mailto:triinlellep@gmail.com?subject=THRESHOLD%20%E2%80%94%20Private%20Invitation%20Inquiry" class="commission-button">
+          Begin the conversation
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FOOTER ============== -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">THRESHOLD</div>
+      <p class="footer-tagline">
+        Tonight you are not at a concert.<br/>You are at a threshold.
+      </p>
+    </div>
+
+    <div class="footer-col">
+      <h5>Private Commissions</h5>
+      <a href="mailto:triinlellep@gmail.com">triinlellep@gmail.com</a>
+      <a href="https://wa.me/37255575590">WhatsApp +372 5557 5590</a>
+    </div>
+
+    <div class="footer-col">
+      <h5>Strategic Framework</h5>
+      <a href="https://stardi.me">Stardi.me</a>
+      <p style="opacity: 0.6">Independent strategic synthesis</p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2026 Triin Lellep · All rights reserved</span>
+    <span class="stardi">Strategic framework by Stardi.me</span>
+  </div>
+</footer>
+
+</body>
+</html>
