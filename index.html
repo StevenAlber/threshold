@@ -786,10 +786,27 @@
 
   /* ============== RESPONSIVE ============== */
   @media (max-width: 900px) {
-    nav { padding: 20px 24px; }
-    .nav-links { gap: 24px; }
-    .nav-links a { font-size: 11px; }
-    .nav-links li:not(:last-child) { display: none; }
+    nav {
+      padding: 16px 20px;
+      gap: 8px;
+    }
+
+    .logo {
+      font-size: 18px;
+      letter-spacing: 0.24em;
+    }
+
+    .nav-links { gap: 14px; }
+    .nav-links a { font-size: 10px; letter-spacing: 0.18em; }
+
+    /* Hide middle nav links, keep CTA + lang link */
+    .nav-links li:not(:nth-last-child(-n+2)) { display: none; }
+
+    /* Smaller hero title on mobile */
+    h1.hero-title {
+      font-size: clamp(48px, 14vw, 72px);
+      line-height: 0.95;
+    }
 
     section, .hero, .negation, .pull-quote-section, .evening,
     .movements, .artist, .hosts, .commission { padding: 100px 24px; }
